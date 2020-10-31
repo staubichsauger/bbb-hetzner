@@ -1,5 +1,5 @@
 provider "hcloud" {
-	token = "${var.hcloud_token}"
+	token = var.hcloud_token
 }
 
 resource "random_string" "name" { 
@@ -9,5 +9,5 @@ resource "random_string" "name" {
 }
 
 locals {                        
-	name = "${var.name}-${terraform.env}-${random_string.name.result}"
+	name = "${var.name}-${random_string.name.result}"
 }

@@ -23,3 +23,4 @@ variable "location" {
 
 # Determining the ssh key that will be added to the instance when creating
 variable "public_key" {}
+variable "private_key_path" {}
