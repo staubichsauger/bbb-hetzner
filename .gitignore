@@ -1,4 +1,4 @@
-i*.tfstate         # Infrastructure condition
+*.tfstate         # Infrastructure condition
 *.tfstate.backup  # Infrastructure state backup
 .terraform/       # Terraform module directories
 terraform.tfvars  # variable file
