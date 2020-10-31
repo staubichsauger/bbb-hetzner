@@ -23,6 +23,9 @@ resource "hcloud_server" "server" {                     # Create a server
 # File definition user-data
 data "template_file" "instance" {
     template = file("${path.module}/user-data/instance.tpl")
+    vars = {
+        floating_ip = data.hcloud_floating_ip.video.ip_address
+    }
 }
 
 # Definition ssh key from variable

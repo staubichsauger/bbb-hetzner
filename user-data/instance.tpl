@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # ---------------------- Setup requirements
+ip addr add ${floating_ip} dev eth0
+
 apt-get update
 apt-get install -yqq \
  apt-transport-https \
