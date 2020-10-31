@@ -1,0 +1,6 @@
+i*.tfstate         # Infrastructure condition
+*.tfstate.backup  # Infrastructure state backup
+.terraform/       # Terraform module directories
+terraform.tfvars  # variable file
+.env              # variable file
+*.pem             # Keys with pem extension
