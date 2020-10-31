@@ -25,17 +25,18 @@ data "template_file" "instance" {
     template = file("${path.module}/user-data/instance.tpl")
     vars = {
         floating_ip = data.hcloud_floating_ip.video.ip_address
+        dnsname = vars.dnsname
     }
 }
 
 # Definition ssh key from variable
 resource "hcloud_ssh_key" "user" {
     name = "user"
-    public_key = var.public_key
+    public_key = file(var.public_key)
 }
 
 data "hcloud_floating_ip" "video" {
-  name = "video"
+  name = var.floating_ip_name
 }
 
 resource "hcloud_floating_ip_assignment" "video" {
@@ -44,7 +45,7 @@ resource "hcloud_floating_ip_assignment" "video" {
 }
 
 data "hcloud_volume" "certs" {
-  name = "certs"
+  name = var.volume_name
 }
 
 resource "hcloud_volume_attachment" "certs" {

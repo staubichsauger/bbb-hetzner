@@ -4,3 +4,4 @@
 terraform.tfvars
 .env
 *.pem
+tmp/

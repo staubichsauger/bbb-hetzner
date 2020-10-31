@@ -34,6 +34,9 @@ mount /dev/sdb /var/data
 git clone --recurse-submodules https://github.com/alangecker/bigbluebutton-docker.git bbb-docker
 cd bbb-docker/
 cp /var/data/bbb-env .env
+
+sed -i "s#EXTERNAL_IPv4=.*#EXTERNAL_IPv4=${floating_ip}#" .env
+
 rm docker-compose.https.yml
 
 cp /tmp/https.yml docker-compose.https.yml
@@ -56,3 +59,5 @@ ufw allow 16384:32768/udp
 ufw allow 3008
 ufw allow 5143
 ufw default deny
+
+echo "Done!" > /tmp/msg
