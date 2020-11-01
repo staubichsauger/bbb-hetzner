@@ -5,6 +5,7 @@ variable "hcloud_token" {}
 variable "name" {
 	default = "bbb"
 }
+variable "dnsname" {}
 
 # Defining a variable source OS image for an instance
 variable "image" {
@@ -36,3 +37,7 @@ variable "public_key_path" {
 variable "private_key_path" {
 	default = "tmp/id_rsa"
 }
+
+# Admin credentials
+variable "admin_email" {}
+variable "admin_pwd" {}

@@ -18,6 +18,10 @@ resource "hcloud_server" "server" {                     # Create a server
     source = "user-data/https.yml"                           # Path to file on local machine
     destination = "/tmp/https.yml"                          # Path to copy
   }
+  provisioner "file" {                                  # Copying files to instances
+    source = "user-data/bbb-env"                           # Path to file on local machine
+    destination = "/tmp/bbb-env"                          # Path to copy
+  }
 }
 
 # File definition user-data
@@ -25,14 +29,16 @@ data "template_file" "instance" {
     template = file("${path.module}/user-data/instance.tpl")
     vars = {
         floating_ip = data.hcloud_floating_ip.video.ip_address
-        dnsname = vars.dnsname
+        dnsname = var.dnsname
+        admin_email = var.admin_email
+        admin_pwd = var.admin_pwd
     }
 }
 
 # Definition ssh key from variable
 resource "hcloud_ssh_key" "user" {
     name = "user"
-    public_key = file(var.public_key)
+    public_key = file(var.public_key_path)
 }
 
 data "hcloud_floating_ip" "video" {
