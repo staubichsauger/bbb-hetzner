@@ -54,7 +54,7 @@ EXTERNAL_IPv4=
 # setting the network interface speeds up kurentos WebRTC connection time,
 # but currently also disables IPv6 for Kurento
 # (https://github.com/Kurento/bugtracker/issues/500)
-#NETWORK_INTERFACE=eth0
+NETWORK_INTERFACE=eth0
 
 # STUN SERVER
 # stun.freeswitch.org

@@ -76,7 +76,7 @@ echo composedone >> /tmp/msg
 sleep 300
 
 echo createuser >> /tmp/msg
-./scripts/compose exec greenlight bundle exec rake admin:create[admin,${admin_email},${admin_pwd},admin] >> /tmp/msg
+./scripts/compose exec greenlight bundle exec rake admin:create[admin,${admin_email},${admin_pwd},admin]
 
 ufw enable
 ufw allow 22/tcp
@@ -91,6 +91,6 @@ ufw default deny
 
 echo started >> /tmp/msg
 
-docker image save -o /var/data/images.tar $(docker images bbb-docker* -q|tr '\n' ' ')
+docker image save -o /var/data/images.tar $(docker images bbb-docker* | tail -n +2 | sed 's#.*\(bbb-[a-z]\+_[a-z0-9]\+-\?[a-z]*\).*#\1#' | tr '\n' ' ')
 
 echo savedimages >> /tmp/msg
