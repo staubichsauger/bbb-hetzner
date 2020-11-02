@@ -41,4 +41,6 @@ The following links were essential to the creation this project:
 - [Terraform + Hetzner](https://blog.maddevs.io/terraform-hetzner-1df05267baf0)
 
 ## Licenses
-This project has some copied/modified code from [alangecker/bigbluebutton-docker](https://github.com/alangecker/bigbluebutton-docker) which is provided under the [LGPL v3.0 licence](https://github.com/alangecker/bigbluebutton-docker/blob/v2.2.x/LICENSE), therefore this repository must retain the same licence.
+This project has some copied/modified code from [alangecker/bigbluebutton-docker](https://github.com/alangecker/bigbluebutton-docker), which is provided under the [LGPL v3.0 licence](https://github.com/alangecker/bigbluebutton-docker/blob/v2.2.x/LICENSE). The copied/modified parts are:
+- ```user-data/bbb-env```, which is a modified version of https://github.com/alangecker/bigbluebutton-docker/blob/v2.2.x/sample.env
+- ```user-data/instance.tpl```, which contains code copied from https://github.com/alangecker/bigbluebutton-docker/blob/v2.2.x/scripts/setup
