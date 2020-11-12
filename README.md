@@ -27,9 +27,7 @@ Set your desired values inside the ```variables.tf``` file (do NOT place the inf
 Have a look at the ```user-data/bbb-env``` file to see if the settings are as desired. Keep in mind that this is what currently works for me, any change might break the installation.
 
 ## Deployment
-Run ```terraform init```, ```terraform plan```, and ```terraform apply``` to deploy the BBB server. Check the changes before typing ```yes``` at the apply step.
-
-Then have a look at the ```Graphs``` section of your newly created server. Once the CPU load drops, you should be able to reach BBB at your domain name and be able to log in using the provided email and password. You can ssh into the VM and ```tail -f /tmp/msg``` to follow the progress of the installation. The first setup will take longer and logging in may take some time past the CPU load dropping.
+Run ```terraform init```, ```terraform plan```, and ```terraform apply``` to deploy the BBB server. Check the changes before typing ```yes``` at the apply step. Alternatively you can run the ```start.sh``` script after ```terraform init```, which will output the progress of the init script.
 
 The volume is used to store your LetsEncrypt certificate, your BBB greenlight users and the custom built docker images. This accelerates consecutive deployments and carries users over.
 

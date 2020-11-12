@@ -13,8 +13,6 @@ apt-get install -yqq \
  git \
  ufw
 
-echo requirements > /tmp/msg
-
 # ---------------------- Install docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
 add-apt-repository    "deb [arch=amd64] https://download.docker.com/linux/debian \
@@ -26,7 +24,6 @@ apt-get install docker-ce docker-ce-cli containerd.io
 curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
 
-echo docker >> /tmp/msg
 # ---------------------- Setup volume
 mkdir -p /home/bbb
 cd /home/bbb
@@ -62,16 +59,12 @@ if [ -f "/var/data/images.tar" ]; then
     docker image load -i /var/data/images.tar
 fi
 
-echo startcompose >> /tmp/msg
-
 ./scripts/compose up -d
 
 while [ $(bash /home/bbb/bbb-docker/scripts/compose ps | wc -l) -lt 5 ]; do
-    echo notup >> /tmp/msg
+    echo waiting
     sleep 10
 done
-
-echo composedone >> /tmp/msg
 
 sleep 300
 
@@ -89,8 +82,8 @@ ufw allow 3008
 ufw allow 5143
 ufw default deny
 
-echo started >> /tmp/msg
+echo "------------------------------ started ------------------------------"
 
 docker image save -o /var/data/images.tar $(docker images bbb-docker* | tail -n +2 | sed 's#.*\(bbb-[a-z]\+_[a-z0-9]\+-\?[a-z]*\).*#\1#' | tr '\n' ' ')
 
-echo savedimages >> /tmp/msg
+echo "------------------------------ done ---------------------------------"
