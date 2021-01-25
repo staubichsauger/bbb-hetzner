@@ -37,7 +37,7 @@ data "template_file" "instance" {
 
 # Definition ssh key from variable
 resource "hcloud_ssh_key" "user" {
-    name = "user"
+    name = "bbb"
     public_key = file(var.public_key_path)
 }
 
