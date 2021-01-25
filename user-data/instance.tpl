@@ -10,8 +10,8 @@ apt-get install -yqq \
  curl \
  gnupg2 \
  software-properties-common \
- git \
- ufw
+ git
+# ufw
 
 # ---------------------- Install docker
 curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
@@ -71,16 +71,16 @@ sleep 300
 echo createuser >> /tmp/msg
 ./scripts/compose exec -T greenlight bundle exec rake admin:create[admin,${admin_email},${admin_pwd},admin]
 
-ufw enable
-ufw allow 22/tcp
-ufw allow 80
-ufw allow 443
-ufw allow 3000:4000/tcp
-ufw allow 3000:4000/udp
-ufw allow 465
-ufw allow 16384:32768/udp
-ufw allow 5143
-ufw default deny
+#ufw enable
+#ufw allow 22/tcp
+#ufw allow 80
+#ufw allow 443
+#ufw allow 3000:4000/tcp
+#ufw allow 3000:4000/udp
+#ufw allow 465
+#ufw allow 16384:32768/udp
+#ufw allow 5143
+#ufw default deny
 
 echo "------------------------------ started ------------------------------"
 
