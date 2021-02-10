@@ -43,13 +43,17 @@ ln -s /var/data/postgres-data postgres-data
 RANDOM_1=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 40)
 RANDOM_2=$(head /dev/urandom | tr -dc A-Za-z0-9 | head -c 40)
 RANDOM_3=$(head /dev/urandom | tr -dc a-f0-9 | head -c 128)
+RANDOM_4=$(head /dev/urandom | tr -dc A-Za-f0-9 | head -c 32)
 sed -i "s/SHARED_SECRET=.*/SHARED_SECRET=$RANDOM_1/" .env
 sed -i "s/ETHERPAD_API_KEY=.*/ETHERPAD_API_KEY=$RANDOM_2/" .env
 sed -i "s/RAILS_SECRET=.*/RAILS_SECRET=$RANDOM_3/" .env
+sed -i "s/TURN_SECRET=.*/TURN_SECRET=$RANDOM_4/" .env
 
 # Set variables injected by terraform
 sed -i "s#EXTERNAL_IPv4=.*#EXTERNAL_IPv4=${floating_ip}#" .env
+sed -i "s#STUN_IP=.*#STUN_IP=${floating_ip}#" .env
 sed -i "s#DOMAIN=.*#DOMAIN=${dnsname}#" .env
+sed -i "s#TURN_SERVER=.*#TURN_SERVER=turns:${dnsname}:465?transport=tcp#" .env
 
 rm docker-compose.https.yml
 cp /tmp/https.yml docker-compose.https.yml

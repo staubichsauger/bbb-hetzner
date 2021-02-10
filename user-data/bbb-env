@@ -9,7 +9,7 @@ ENABLE_HTTPS_PROXY=true
 
 # coturn (a TURN Server)
 # requires HTTPS Proxy to be enabled
-#ENABLE_COTURN=true
+ENABLE_COTURN=true
 
 # Greenlight Frontend
 # https://docs.bigbluebutton.org/greenlight/gl-overview.html
@@ -63,8 +63,8 @@ STUN_PORT=3478
 
 # TURN SERVER
 # uncomment and adjust following two lines to add an external TURN server
-#TURN_SERVER=turns:turn.example.com:443?transport=tcp
-#TURN_SECRET=
+TURN_SERVER=turns:turn.example.com:443?transport=tcp
+TURN_SECRET=
 
 # Allowed SIP IPs
 # due to high traffic caused by bots, by default the SIP port is blocked.
@@ -77,7 +77,7 @@ SIP_IP_ALLOWLIST=
 # CUSTOMIZATION
 # ====================================
 
-CLIENT_TITLE="BigBlueButton"
+CLIENT_TITLE="lalatalk"
 
 # use following lines to replace the default welcome message and footer
 WELCOME_MESSAGE="Welcome!"
@@ -113,6 +113,8 @@ DISABLE_SOUND_MUTED=false
 
 # set to true to disable announcement "You are the only person in this conference" 
 DISABLE_SOUND_ALONE=true
+
+SOUNDS_LANGUAGE=en-us-callie
 
 # maximum count of breakout rooms per meeting
 # Warning: increasing the limit of breakout rooms per meeting
