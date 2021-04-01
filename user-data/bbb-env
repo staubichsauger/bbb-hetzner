@@ -63,8 +63,8 @@ STUN_PORT=3478
 
 # TURN SERVER
 # uncomment and adjust following two lines to add an external TURN server
-TURN_SERVER=turns:turn.example.com:443?transport=tcp
-TURN_SECRET=
+#TURN_SERVER=turns:turn.example.com:443?transport=tcp
+#TURN_SECRET=
 
 # Allowed SIP IPs
 # due to high traffic caused by bots, by default the SIP port is blocked.
