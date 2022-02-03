@@ -1,3 +1,7 @@
+# ⚠️ DEPRECATED ⚠️
+
+Just use the Hetzner app image when creating a server. It works fine with smaller instances than the recommended server sizes if you just want it for a small conference. The setup in this repo no longer works and will not be maintained.
+
 # Deploy a temporary BigBlueButton instance to the Hetzner Cloud using terraform
 
 This repository contains a [terraform](https://www.terraform.io/) configuration to deploy [BigBlueButton](https://bigbluebutton.org/) to the [Hetzner Cloud](https://www.hetzner.com/cloud) using [bbb-docker](https://github.com/alangecker/bigbluebutton-docker). The result is meant for temporary on-demand BBB instances, but could be modified for more permanent deployments.
